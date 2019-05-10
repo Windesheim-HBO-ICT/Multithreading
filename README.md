@@ -1,5 +1,5 @@
 # Multithreading
-Een thread is een proces wat gebruikt wordt voor de uitvoer van code. Standaard wordt één thread gestart voor de uitvoer van een applicatie. Deze enkele thread is dus verantwoordelijk voor de uitvoer van alle code van de applicatie. Zo ook het afhandelen van de gebruikers invoer zoals muisklikken of toetsenbord aanslagen. En ook het bijwerken van het scherm (bijv de paintComponent).
+Een thread is een proces dat gebruikt wordt voor de uitvoer van code. Standaard wordt één thread gestart voor de uitvoer van een applicatie. Deze enkele thread is dus verantwoordelijk voor de uitvoer van alle code van de applicatie. Zo ook het afhandelen van de gebruikers invoer zoals muisklikken of toetsenbord aanslagen. En ook het bijwerken van het scherm (bijv de paintComponent).
 
 Willen we echter een stuk code continu laten uitvoeren in een loop, zoals bij het luisteren naar inkomende connecties of berichten, dan legt dit beslag op deze enkele thread en is er geen tijd meer om de code voor de schermafhandeling uit te voeren. Resultaat: de applicatie reageert niet meer.
 
