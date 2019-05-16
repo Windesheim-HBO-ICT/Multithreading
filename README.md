@@ -24,3 +24,13 @@ Een simpele client die je vanaf de commandline meerdere keren kan starten om zo 
 java -cp dist/Threads.jar client.Startup 127.0.0.1 59090 Client1
 ```
 Door de client meerdere keren te starten met verschillende namen, kun je de communicatie met verschillende clients tegelijkertijd testen.
+
+## en verder ...
+De voorbeeldcode in deze repository laat de basis zien van het werken met threads in Java. Wil je serieuzer aan de slag met threads, dan zijn er nog wel wat zaken waar je rekening mee zult moeten houden. Zoek daarvoor informatie op over de volgende onderwerpen:
+
+- Thread safety
+- Synchronization en volatile variabelen
+- Concurrency, locking en deadlocks
+- Interruption, wait en join
+
+En als laatste: het werken met threads lijkt op het eerste gezicht eenvoudig, in de praktijk is dat het vaak niet. Juist vanwege de onderwerpen die hierboven staan kan een applicatie met threads onverklaarbaar gedrag vertonen. Soms is dat gedrag niet consistent doordat code parallel wordt uitgevoerd. Dit maakt debuggen ook weer een lastige klus. Handle with care ;)
