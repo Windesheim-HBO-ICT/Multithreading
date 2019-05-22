@@ -8,15 +8,15 @@ Om dit op te lossen kunnen we gebruik maken van meerdere threads. We voeren daar
 Deze repository bevat voorbeeld code voor de toepassing van multithreading in een Java applicatie. De code is niet optimaal, maar bewust zo eenvoudig mogelijk gehouden om de kern van het verhaal duidelijk te maken.
 
 ## singleThreaded
-Dit deel bestaat uit een enkel JFrame met twee knoppen. Zodra je op de knop "Start Listening" klikt, wordt een continue loop gestart om te luisteren naar clients die connecten. De continue loop (en het wachten op listener.accept()) zorgen ervoor dat de enige thread voortdurend bezet is en dus geen tijd meer heeft voor de afhandeling van gebruikers invoer. In dit voorbeeld reageert de applicatie dus niet meer op muisklikken of bijvoorbeeld het veranderen van de grootte van het scherm.
+Dit deel bestaat uit een enkel JFrame met twee knoppen. Zodra je op de knop "Start Listening" klikt, wordt een continue loop gestart om te luisteren naar clients die connecten. De continue loop (en het wachten op listener.accept()) zorgt ervoor dat de enige beschikbare thread voortdurend bezet is en dus geen tijd meer heeft voor de afhandeling van gebruikers invoer. In dit voorbeeld reageert de applicatie dus niet meer op muisklikken of bijvoorbeeld het veranderen van de grootte van het scherm.
 
 ## multiThreaded
 In dit deel is de code voor het luisteren naar de clients verplaatst naar een aparte klasse: de Server klasse. Door deze de interface Runnable te laten implementeren is deze klasse te starten binnen een aparte thread. Hierdoor blijft de applicatie dus gewoon reageren op gebruikers input. Zodra een client verbinding maakt, dan levert dit een Socket object op. Deze plaatsen we vervolgens ook weer op een aparte thread in de vorm van een Client klasse zodat we tegelijkertijd kunnen communiceren met meerdere clients. We houden een lijst bij met daarin alle verbonden clients.
 
-We hebben hier dus één 'hoofd'-thread voor de afhandeling van de user interface. Daarna een tweede thread voor het luisteren naar clients en daarna nog per client een aparte thread voor het communiceren met die client.
+We hebben hier dus één 'hoofd'-thread voor de afhandeling van de user interface. Daarna een tweede thread voor het luisteren naar clients die connecten en daarna nog per client een aparte thread voor het communiceren met die client.
 
 ## callbackInterface
-We gaan hier nog een stapje verder, want zodra we een bericht ontvangen van een client, dan moet dit bijvoorbeeld op het scherm worden getoond. Hiervoor is een Callback interface toegevoegd die we implementeren in het Hoofdscherm. Door nu het Hoofdscherm mee te geven aan de Server en op zijn beurt weer aan de Client, heeft de Client de mogelijkheid om de messageRecieved functie van het Hoofdscherm aan te roepen.
+We gaan hier nog een stapje verder, want zodra we een bericht ontvangen van een client, dan moet dit bijvoorbeeld op het scherm worden getoond. Hiervoor is een Callback interface toegevoegd die we implementeren in het Hoofdscherm. Door nu het Hoofdscherm mee te geven aan de Server en op zijn beurt weer aan de Client, heeft de Client de mogelijkheid om de messageReceived functie van het Hoofdscherm aan te roepen.
 
 ## client
 Een simpele client die je vanaf de commandline meerdere keren kan starten om zo de connectie met de server te testen. Deze werkt samen met de applicatie van callbackInterface en kan gestart worden een ip adres, poort nummer en client naam als argument:
@@ -29,7 +29,7 @@ Door de client meerdere keren te starten met verschillende namen, kun je de comm
 De voorbeeldcode in deze repository laat de basis zien van het werken met threads in Java. Wil je serieuzer aan de slag met threads, dan zijn er nog wel wat zaken waar je rekening mee zult moeten houden. Zoek daarvoor informatie op over de volgende onderwerpen:
 
 - Thread safety
-- Synchronization en volatile variabelen
+- Synchronization, volatile variabelen
 - Concurrency, locking en deadlocks
 - Interruption, wait en join
 
