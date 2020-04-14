@@ -33,4 +33,6 @@ De voorbeeldcode in deze repository laat de basis zien van het werken met thread
 - Concurrency, locking en deadlocks
 - Interruption, wait en join
 
-En als laatste: het werken met threads lijkt op het eerste gezicht eenvoudig, in de praktijk is dat het vaak niet. Juist vanwege de onderwerpen die hierboven staan kan een applicatie met threads onverklaarbaar gedrag vertonen. Soms is dat gedrag niet consistent doordat code parallel wordt uitgevoerd. Dit maakt debuggen ook weer een lastige klus. Handle with care ;)
+Het werken met threads lijkt op het eerste gezicht eenvoudig, in de praktijk is dat het vaak niet. Juist vanwege de onderwerpen die hierboven staan kan een applicatie met threads onverklaarbaar gedrag vertonen. Soms is dat gedrag niet consistent doordat code parallel wordt uitgevoerd. Dit maakt debuggen ook weer een lastige klus.
+
+Als laatste: naast het gebruik van threads is het ook mogelijk om asynchroon te programmeren om de user interface responsive te houden. Dit komt bij het semester Web Development aan bod bij de modules Server en Client technology.
