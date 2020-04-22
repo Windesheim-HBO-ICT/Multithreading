@@ -25,7 +25,7 @@ public class Hoofdscherm extends JFrame implements ActionListener {
             listener = new ServerSocket(59090);
             System.out.println("The server is running...");
 
-            // Deze continue loop blokkeert de user interface !
+            // Door deze continue loop blokkeert de user interface!
             while (true) {
                 Socket socket = listener.accept();
                 System.out.println("Connected to " + socket.getInetAddress().toString());
