@@ -18,13 +18,48 @@ public class Hoofdscherm extends JFrame implements ActionListener, Callback {
     private Server server;
 
     public Hoofdscherm() {
+        initializeComponents();
+
+        // Bij het afsluiten van de applicatie, stoppen we ook de server
+        // die op zijn beurt ook weer alle clients stopt
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                stopServer();
+                System.exit(0);
+            }
+        });
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        int p = Integer.parseInt(port.getText());
+        server = new Server(p, this);
+        new Thread(server).start();
+    }
+
+    @Override
+    public void messageReceived(String message) {
+        textArea.append(message + "\n");
+
+        JScrollBar vertical = scrollPane.getVerticalScrollBar();
+        vertical.setValue(vertical.getMaximum());
+    }
+
+    private void stopServer() {
+        if (server != null) {
+            server.stop();
+        }
+    }
+
+    private void initializeComponents() {
         setTitle("Callback Interface");
-        setSize(550, 450);
+        setSize(600, 500);
         setLayout(new FlowLayout());
-        
-        port = new JTextField("59090", 10);
+
+        port = new JTextField("5000", 10);
         add(port);
-        
+
         startListening = new JButton("Start Listening");
         startListening.addActionListener(this);
         add(startListening);
@@ -37,37 +72,7 @@ public class Hoofdscherm extends JFrame implements ActionListener, Callback {
         scrollPane = new JScrollPane(textArea);
         add(scrollPane);
 
-        // Bij het afsluiten van de applicatie, stoppen we ook de server
-        // die op zijn beurt ook weer alle clients stopt
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                stopServer();
-                System.exit(0);
-            }
-        });
-
+        setLocationRelativeTo(null);
         setVisible(true);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        int p = Integer.parseInt(port.getText());
-        server = new Server(p, this);
-        new Thread(server).start();
-    }
-
-    @Override
-    public void messageRecieved(String message) {
-        textArea.append(message + "\n");
-
-        JScrollBar vertical = scrollPane.getVerticalScrollBar();
-        vertical.setValue(vertical.getMaximum());
-    }
-
-    private void stopServer() {
-        if (server != null) {
-            server.stop();
-        }
     }
 }

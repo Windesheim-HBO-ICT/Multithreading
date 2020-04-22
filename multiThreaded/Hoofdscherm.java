@@ -3,8 +3,6 @@ package multiThreaded;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
@@ -12,10 +10,29 @@ public class Hoofdscherm extends JFrame implements ActionListener {
 
     private JButton startListening;
     private JButton dummyButton;
-
     private Server server;
 
     public Hoofdscherm() {
+        initializeComponents();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // We started hier een nieuwe thread, met daarin de server
+        // Hierdoor blijft de UI thread beschikbaar voor afhandeling van user input
+        server = new Server(59090);
+        Thread thread = new Thread(server);
+        thread.setDaemon(true);
+        thread.start();
+    }
+
+    private void stopServer() {
+        if (server != null) {
+            server.stop();
+        }
+    }
+
+    private void initializeComponents() {
         setTitle("Multi Threaded");
         setSize(400, 300);
         setLayout(new FlowLayout());
@@ -27,20 +44,7 @@ public class Hoofdscherm extends JFrame implements ActionListener {
         dummyButton = new JButton("Dummy Button");
         add(dummyButton);
 
+        setLocationRelativeTo(null);
         setVisible(true);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // We started hier een nieuwe thread, met daarin de server
-        // Hierdoor blijft de UI thread beschikbaar voor afhandeling van user input 
-        server = new Server(59090);
-        new Thread(server).start();
-    }
-
-    private void stopServer() {
-        if (server != null) {
-            server.stop();
-        }
     }
 }

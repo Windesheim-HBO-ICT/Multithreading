@@ -18,7 +18,7 @@ public class Startup {
             System.out.println("Please provide an ip address, port number and client name");
             return;
         }
-        
+
         String ipaddress = args[0];
         int port = Integer.parseInt(args[1]);
         String clientName = args[2];
@@ -28,7 +28,10 @@ public class Startup {
             writer = new PrintWriter(socket.getOutputStream(), true);
             reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
+            System.out.println("Client " + clientName + " started, sending message every 2 seconds.");
+
             while (true) {
+                System.out.println("Sending message from " + clientName + " to server.");
                 writer.println("Message from " + clientName);
                 Thread.sleep(2000);
             }

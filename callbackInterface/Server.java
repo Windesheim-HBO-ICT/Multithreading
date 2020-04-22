@@ -24,7 +24,7 @@ public class Server implements Runnable {
         try {
             this.listener = new ServerSocket(port);
 
-            callback.messageRecieved("Server started on port " + port);
+            callback.messageReceived("Server started on port " + port);
             System.out.println("Server started");
 
             while (!stopping) {

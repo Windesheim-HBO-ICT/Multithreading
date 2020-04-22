@@ -34,7 +34,7 @@ public class Client implements Runnable {
             try {
                 String message = this.reader.readLine();
                 System.out.println("Received message from client: " + message);
-                callback.messageRecieved(message);
+                callback.messageReceived(message);
             } catch (IOException ex) {
                 System.out.println(ex);
                 stopping = true;

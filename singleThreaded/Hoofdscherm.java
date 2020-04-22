@@ -16,18 +16,7 @@ public class Hoofdscherm extends JFrame implements ActionListener {
     private ServerSocket listener;
 
     public Hoofdscherm() {
-        setTitle("Single Threaded");
-        setSize(400, 300);
-        setLayout(new FlowLayout());
-
-        startListening = new JButton("Start Listening");
-        startListening.addActionListener(this);
-        add(startListening);
-
-        dummyButton = new JButton("Dummy Button");
-        add(dummyButton);
-
-        setVisible(true);
+        initializeComponents();
     }
 
     @Override
@@ -44,5 +33,22 @@ public class Hoofdscherm extends JFrame implements ActionListener {
         } catch (IOException ex) {
             System.out.println(ex);
         }
+    }
+
+    private void initializeComponents() {
+
+        setTitle("Single Threaded");
+        setSize(400, 300);
+        setLayout(new FlowLayout());
+
+        startListening = new JButton("Start Listening");
+        startListening.addActionListener(this);
+        add(startListening);
+
+        dummyButton = new JButton("Dummy Button");
+        add(dummyButton);
+
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 }

@@ -1,0 +1,45 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Singlethreaded",
+            "request": "launch",
+            "mainClass": "singleThreaded.Startup",
+            "projectName": "Multithreading_d5e12c05"
+        },
+        {
+            "type": "java",
+            "name": "Multithreaded",
+            "request": "launch",
+            "mainClass": "multiThreaded.Startup",
+            "projectName": "Multithreading_d5e12c05"
+        },
+        {
+            "type": "java",
+            "name": "Multithreaded with callback",
+            "request": "launch",
+            "mainClass": "callbackInterface.Startup",
+            "projectName": "Multithreading_d5e12c05"
+        },
+        {
+            "type": "java",
+            "name": "Client 1",
+            "request": "launch",
+            "mainClass": "client.Startup",
+            "projectName": "Multithreading_d5e12c05",
+            "args": "127.0.0.1 5000 Client1"
+        },
+        {
+            "type": "java",
+            "name": "Client 2",
+            "request": "launch",
+            "mainClass": "client.Startup",
+            "projectName": "Multithreading_d5e12c05",
+            "args": "127.0.0.1 5000 Client2"
+        }
+    ]
+}
